@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: pprice
+  profiles:
+    active: standalone
+    include:
+    - h2
+    - infrastructure
+    - rest

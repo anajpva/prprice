@@ -1,0 +1,210 @@
+openapi: 3.0.2
+
+info:
+  version: 0.0.1
+  title: Prices Service
+
+security: [ ]
+
+
+servers:
+  - description: LOCAL
+    url: http://localhost:8080/pprice
+
+tags:
+  - name: Products
+    description: Section of the products
+
+paths:
+
+  /v1/products/prices:
+
+    get:
+      tags:
+        - Products
+      summary: Get product price
+      description: Get price for product by date. When date is not informed, the current price will be returned.
+      operationId: getProductPrice
+      parameters:
+        - $ref: '#/components/parameters/brandId'
+        - $ref: '#/components/parameters/productId'
+        - $ref: '#/components/parameters/date'
+      responses:
+        '200':
+          description: Product price
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductPriceDTO'
+              examples:
+                ProductPrice:
+                  $ref: '#/components/examples/ProductPrice'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+              examples:
+                BadRequestExample:
+                  $ref: '#/components/examples/BadRequestExample'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+              examples:
+                ProductoNotFoundExample:
+                  $ref: '#/components/examples/ProductoNotFoundExample'
+                ProductPriceoNotFoundExample:
+                  $ref: '#/components/examples/ProductPriceoNotFoundExample'
+        '422':
+          description: Invalid parameter
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+              examples:
+                InternalErrorExample:
+                  $ref: '#/components/examples/InternalErrorExample'
+
+components:
+
+  parameters:
+
+    brandId:
+      name: brandId
+      in: query
+      required: true
+      description: Brand identifier
+      schema:
+        type: integer
+      example: 1
+
+    productId:
+      name: productId
+      in: query
+      required: true
+      description: Identifier of the element
+      schema:
+        type: integer
+      example: 23341
+
+    date:
+      name: date
+      in: query
+      description: Date to request
+      schema:
+        type: string
+        format: date-time
+        example: '2025-05-01T01:00:00Z'
+
+
+  schemas:
+
+    ErrorDTO:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: string
+          description: codes of the error
+          enum:
+            - 'INTERNAL_ERROR'
+            - 'BAD_REQUEST'
+            - 'UNAUTHORIZED'
+            - 'PRODUCT_NOT_FOUND'
+            - 'PRODUCT_PRICE_NOT_FOUND'
+          x-enum-varnames:
+            - INTERNAL_ERROR
+            - BAD_REQUEST
+            - UNAUTHORIZED
+            - PRODUCT_NOT_FOUND
+            - PRODUCT_PRICE_NOT_FOUND
+        message:
+          type: string
+          description: message of the error
+
+    ProductPriceDTO:
+      description: Product price
+      type: object
+      properties:
+        brandId:
+          description: Brand identifier
+          type: integer
+          example: 1
+        productId:
+          description: Identifier of the element
+          type: integer
+          example: 23341
+        rateId:
+          description: Price rate identifier
+          type: integer
+          example: 3
+        startDate:
+          type: string
+          format: date-time
+          description: Start date range
+          example: '2025-04-01T01:00:00Z'
+        endDate:
+          type: string
+          format: date-time
+          description: End date range
+          example: '2025-05-21T01:00:00Z'
+        price:
+          $ref: '#/components/schemas/PriceDTO'
+
+    PriceDTO:
+      description: Price detail
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+          example: 29.49
+        currency:
+          type: string
+          example: 'EUR'
+
+  examples:
+
+    BadRequestExample:
+      summary: Bad request
+      value:
+        code: 'BAD_REQUEST'
+        message: 'The parameter X is required'
+
+    ProductoNotFoundExample:
+      summary: Product not found
+      value:
+        code: 'PRODUCT_NOT_FOUND'
+        message: 'No prices found for product'
+
+    ProductPriceoNotFoundExample:
+      summary: Product price not found
+      value:
+        code: 'PRODUCT_PRICE_NOT_FOUND'
+        message: 'No price available for date'
+
+    InternalErrorExample:
+      summary: Internal error
+      value:
+        code: 'INTERNAL_ERROR'
+        message: 'There is an internal error'
+
+    ProductPrice:
+      summary: Product price example
+      value:
+        brandId: 1
+        productId: 23341
+        rateId: 2
+        startDate: '2025-04-11T01:00:00Z'
+        endDate: '2025-05-09T01:00:00Z'
+        price:
+          amount: 1009.49
+          currency: 'EUR'

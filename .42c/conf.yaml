@@ -1,0 +1,3 @@
+apis:
+  code/pprice-infrastructure-components/pprice-components-rest/src/main/resources/openapi-rest.yaml:
+    alias: "title"
