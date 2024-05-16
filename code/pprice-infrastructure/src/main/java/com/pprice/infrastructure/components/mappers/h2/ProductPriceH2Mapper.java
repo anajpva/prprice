@@ -6,21 +6,19 @@ import java.util.Collection;
 import java.util.List;
 
 import com.pprice.components.h2.dto.ProductPriceH2DTO;
-import com.pprice.domain.entity.price.Price;
 import com.pprice.domain.entity.Product;
 import com.pprice.domain.entity.ProductPrices;
+import com.pprice.domain.entity.price.Price;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
-import org.mapstruct.Mapper;
-import org.springframework.beans.factory.annotation.Autowired;
+@Component
+@RequiredArgsConstructor
+public class ProductPriceH2Mapper {
 
-@Mapper
-public abstract class ProductPriceH2Mapper {
+  private final PriceH2Mapper priceH2Mapper;
 
-  @Autowired
-  private PriceH2Mapper priceH2Mapper;
-
-  @Autowired
-  private ProductH2Mapper productH2Mapper;
+  private final ProductH2Mapper productH2Mapper;
 
   public ProductPrices toEntity(Collection<ProductPriceH2DTO> dtos, Integer productId, Integer brandId) {
     List<ProductPriceH2DTO> productPriceH2Dtos = dtos.stream()

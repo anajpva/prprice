@@ -1,14 +1,18 @@
 package com.pprice.infrastructure.components.mappers.rest;
 
+import static org.mapstruct.InjectionStrategy.CONSTRUCTOR;
+
 import com.pprice.components.rest.dtos.ProductPriceDTO;
 import com.pprice.domain.entity.ProductPrice;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(uses = {
-    InstantRestMapper.class,
-    CurrencyRestMapper.class
-})
+@Mapper(
+    injectionStrategy = CONSTRUCTOR,
+    uses = {
+        InstantRestMapper.class,
+        CurrencyRestMapper.class
+    })
 public interface ProductPriceRestMapper {
 
   @Mapping(source = "entity.product.productId", target = "productId")

@@ -6,7 +6,7 @@ public class ProductMother {
 
   private static final Integer ONE_PRODUCT_ID = 23145;
 
-  private static final Integer ONE_BRAND_ID = 23145;
+  private static final Integer ONE_BRAND_ID = 1;
 
   public static Product oneProduct() {
     return new Product(ONE_PRODUCT_ID, ONE_BRAND_ID);

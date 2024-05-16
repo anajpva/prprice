@@ -17,6 +17,10 @@ public class ProductPricesMother {
     return new ProductPrice(oneProduct(), onePrice());
   }
 
+  public static ProductPrices oneProductPrices() {
+    return new ProductPrices(oneProduct(), List.of(onePrice()));
+  }
+
   public static ProductPrices oneProductPrices(Price price) {
     return new ProductPrices(oneProduct(), List.of(price));
   }

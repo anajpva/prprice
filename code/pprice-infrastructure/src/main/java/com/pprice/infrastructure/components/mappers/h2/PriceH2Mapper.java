@@ -1,18 +1,22 @@
 package com.pprice.infrastructure.components.mappers.h2;
 
+import static org.mapstruct.InjectionStrategy.CONSTRUCTOR;
+
 import java.util.Collection;
 import java.util.List;
 
 import com.pprice.components.h2.dto.ProductPriceH2DTO;
 import com.pprice.domain.entity.price.Price;
-
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(uses = {
-    InstantH2Mapper.class,
-    CurrencyH2Mapper.class
-})
+@Mapper(
+    injectionStrategy = CONSTRUCTOR,
+    uses = {
+        InstantH2Mapper.class,
+        CurrencyH2Mapper.class
+    }
+)
 public interface PriceH2Mapper {
 
   @Mapping(source = "curr", target = "currency")

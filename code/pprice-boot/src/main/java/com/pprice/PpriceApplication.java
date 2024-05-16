@@ -14,6 +14,4 @@ public class PpriceApplication {
 
 //TODO. Dockerizar
 
-//TODO. Repaso al beautyfy
 //TODO. Tests unitarios
-//TODO. Al compilar me deberia correr los tests
