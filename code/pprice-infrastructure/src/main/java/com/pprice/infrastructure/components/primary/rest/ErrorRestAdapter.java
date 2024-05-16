@@ -9,6 +9,7 @@ import com.pprice.domain.exceptions.ValueValidationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.server.ServerWebInputException;
 
 @Component
@@ -26,6 +27,7 @@ class ErrorRestAdapter implements ErrorRestPort {
       code = CodeEnum.PRODUCT_NOT_FOUND;
       status = HttpStatus.NOT_FOUND;
     } else if (cause instanceof ValueValidationException
+        || cause instanceof MissingServletRequestParameterException
         || cause instanceof ServerWebInputException) {
       code = CodeEnum.BAD_REQUEST;
       status = HttpStatus.BAD_REQUEST;
