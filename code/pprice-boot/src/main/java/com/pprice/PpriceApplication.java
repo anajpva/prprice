@@ -13,5 +13,3 @@ public class PpriceApplication {
 }
 
 //TODO. Dockerizar
-
-//TODO. Tests unitarios

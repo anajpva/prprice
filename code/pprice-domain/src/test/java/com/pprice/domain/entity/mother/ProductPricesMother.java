@@ -7,14 +7,19 @@ import static com.pprice.domain.entity.mother.ProductMother.oneProduct;
 import java.time.Instant;
 import java.util.List;
 
+import com.pprice.domain.entity.Product;
 import com.pprice.domain.entity.ProductPrice;
 import com.pprice.domain.entity.ProductPrices;
 import com.pprice.domain.entity.price.Price;
 
 public class ProductPricesMother {
 
+  public static ProductPrice oneProductPrice(Product product) {
+    return new ProductPrice(product, onePrice());
+  }
+
   public static ProductPrice oneProductPrice() {
-    return new ProductPrice(oneProduct(), onePrice());
+    return oneProductPrice(oneProduct());
   }
 
   public static ProductPrices oneProductPrices() {
