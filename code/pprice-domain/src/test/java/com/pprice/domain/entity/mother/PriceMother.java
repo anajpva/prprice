@@ -23,7 +23,11 @@ public class PriceMother {
   public static final Integer ONE_PRICE_ID = 1;
 
   public static Price onePrice() {
-    return new Price(ONE_AMOUNT, CURRENCY, ONE_START_DATE, ONE_END_DATE, ONE_PRIORITY, ONE_PRICE_ID);
+    return onePrice(ONE_PRIORITY);
+  }
+
+  public static Price onePrice(Integer priority) {
+    return new Price(ONE_AMOUNT, CURRENCY, ONE_START_DATE, ONE_END_DATE, priority, ONE_PRICE_ID);
   }
 
   public static Price onePriceExpiration(Instant dateEnd) {

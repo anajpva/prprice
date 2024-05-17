@@ -48,7 +48,7 @@ To run the application, follow these steps:
    docker run -it -p 8080:8080 pprice:latest
    ``` 
 
-## Considerations
 
-It is important to note that the *date range returned* in the response does not necessarily represent the price application range.
-This is because the exercise does not verify that within the date range returned, the price will not be overridden by another with higher priority.
+### Note
+
+It is important to note that the date *range returned* refers to the date range within which the price will not change. That same price can be available at some other point in the timeline.

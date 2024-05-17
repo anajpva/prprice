@@ -1,6 +1,7 @@
 package com.pprice.domain.entity.price;
 
 import static java.time.Instant.now;
+import static java.time.Period.ofDays;
 
 import static com.pprice.domain.entity.mother.PriceMother.CURRENCY;
 import static com.pprice.domain.entity.mother.PriceMother.ONE_AMOUNT;
@@ -147,6 +148,24 @@ class PriceTest {
     Price otherPrice = onePriceExpiration(now());
 
     assertNotEquals(onePrice, otherPrice);
+  }
+
+  @Test
+  void shouldConstructFromPriceAndDates() {
+    Price price = onePrice();
+    Instant startDate = now();
+    Instant endDate = startDate.plus(ofDays(1));
+    Price expected = new Price(price.amount(),
+        price.currency(),
+        startDate,
+        endDate,
+        price.priority(),
+        price.priceId()
+    );
+
+    Price result = new Price(price, startDate, endDate);
+
+    assertEquals(expected, result);
   }
 
 }

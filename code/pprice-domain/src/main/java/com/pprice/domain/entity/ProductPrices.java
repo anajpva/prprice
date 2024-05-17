@@ -18,5 +18,4 @@ public record ProductPrices(Product product, Collection<Price> prices) {
     }
 
   }
-
 }

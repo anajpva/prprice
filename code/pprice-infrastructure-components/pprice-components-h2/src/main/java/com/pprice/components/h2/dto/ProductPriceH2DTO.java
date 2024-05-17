@@ -8,12 +8,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
 
 @Entity
 @Getter
-@Setter
 @ToString(callSuper = true)
 @Table(name = "PRICES")
 public class ProductPriceH2DTO {

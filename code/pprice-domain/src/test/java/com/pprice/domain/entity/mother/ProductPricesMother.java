@@ -5,6 +5,7 @@ import static com.pprice.domain.entity.mother.PriceMother.onePriceExpiration;
 import static com.pprice.domain.entity.mother.ProductMother.oneProduct;
 
 import java.time.Instant;
+import java.util.Collection;
 import java.util.List;
 
 import com.pprice.domain.entity.Product;
@@ -27,7 +28,11 @@ public class ProductPricesMother {
   }
 
   public static ProductPrices oneProductPrices(Price price) {
-    return new ProductPrices(oneProduct(), List.of(price));
+    return oneProductPrices(List.of(price));
+  }
+
+  public static ProductPrices oneProductPrices(Collection<Price> prices) {
+    return new ProductPrices(oneProduct(), prices);
   }
 
   public static ProductPrices oneProductNoPrices() {

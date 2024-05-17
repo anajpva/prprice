@@ -64,7 +64,7 @@
                 <exclude>**/com/pprice/domain/exceptions/*.class</exclude>
                 <exclude>**/com/pprice/domain/repositories/*.class</exclude>
                 <exclude>**/com/pprice/**/mappers/**/*Impl.class</exclude>
-                <exclude>**/*DTO.class</exclude>
+                <exclude>**/**/*DTO.class</exclude>
                 <exclude>**/Application.class</exclude>
               </excludes>
               <outputDirectory>${project.reporting.outputDirectory}/jacoco-aggregate</outputDirectory>

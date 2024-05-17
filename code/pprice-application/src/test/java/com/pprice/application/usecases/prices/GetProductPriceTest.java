@@ -8,7 +8,6 @@ import static com.pprice.application.usecases.prices.mother.GetProductPriceParam
 import static com.pprice.application.usecases.prices.mother.GetProductPriceParamsMother.oneGetProductPriceParamsNoDate;
 import static com.pprice.domain.entity.mother.PriceMother.onePrice;
 import static com.pprice.domain.entity.mother.PriceMother.onePriceExpiration;
-import static com.pprice.domain.entity.mother.ProductPricesMother.oneProductNoPrices;
 import static com.pprice.domain.entity.mother.ProductPricesMother.oneProductPriceExpired;
 import static com.pprice.domain.entity.mother.ProductPricesMother.oneProductPrices;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -20,12 +19,11 @@ import java.time.Instant;
 import com.pprice.application.usecases.prices.params.GetProductPriceParams;
 import com.pprice.domain.entity.ProductPrice;
 import com.pprice.domain.entity.price.Price;
-import com.pprice.domain.exceptions.ProductNotFoundException;
 import com.pprice.domain.exceptions.ProductPriceNotFoundException;
-import com.pprice.domain.repositories.ProductPricesRepository;
-import org.junit.jupiter.api.BeforeEach;
+import com.pprice.domain.services.price.ProductPriceFetcher;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -33,32 +31,16 @@ import org.mockito.junit.jupiter.MockitoExtension;
 class GetProductPriceTest {
 
   @Mock
-  private ProductPricesRepository productPricesRepository;
+  private ProductPriceFetcher productPriceFetcher;
 
+  @InjectMocks
   private GetProductPrice getProductPrice;
-
-  @BeforeEach
-  void beforeEach() {
-
-    getProductPrice = new GetProductPrice(productPricesRepository);
-  }
-
-  @Test
-  void shouldThrowProductNotFoundExceptionWhenNoPrices() {
-    GetProductPriceParams params = oneGetProductPriceParams();
-
-    when(productPricesRepository.findByProduct(params.getProduct()))
-        .thenReturn(oneProductNoPrices());
-
-    assertThrows(ProductNotFoundException.class,
-        () -> getProductPrice.execute(params));
-  }
 
   @Test
   void shouldThrowProductPriceNotFoundExceptionWhenNoPriceForDate() {
     GetProductPriceParams params = oneGetProductPriceParams();
 
-    when(productPricesRepository.findByProduct(params.getProduct()))
+    when(productPriceFetcher.fetch(params.getProduct()))
         .thenReturn(oneProductPriceExpired(params.getDate().minus(ofMinutes(10))));
 
     assertThrows(ProductPriceNotFoundException.class,
@@ -70,7 +52,7 @@ class GetProductPriceTest {
     GetProductPriceParams params = oneGetProductPriceParams();
     Price expectedPrice = onePrice();
 
-    when(productPricesRepository.findByProduct(params.getProduct()))
+    when(productPriceFetcher.fetch(params.getProduct()))
         .thenReturn(oneProductPrices(expectedPrice));
 
     ProductPrice productPrice = getProductPrice.execute(params);
@@ -85,7 +67,7 @@ class GetProductPriceTest {
     Instant now = now().plus(ofDays(1));
     Price expectedPrice = onePriceExpiration(now);
 
-    when(productPricesRepository.findByProduct(params.getProduct()))
+    when(productPriceFetcher.fetch(params.getProduct()))
         .thenReturn(oneProductPrices(expectedPrice));
 
     ProductPrice productPrice = getProductPrice.execute(params);

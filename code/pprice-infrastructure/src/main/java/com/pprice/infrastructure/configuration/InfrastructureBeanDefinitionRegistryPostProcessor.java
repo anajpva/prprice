@@ -1,6 +1,9 @@
 package com.pprice.infrastructure.configuration;
 
+import java.util.Collection;
+
 import com.pprice.application.usecases.ApplicationUseCase;
+import com.pprice.domain.services.DomainService;
 import org.reflections.Reflections;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
@@ -15,11 +18,13 @@ class InfrastructureBeanDefinitionRegistryPostProcessor implements BeanDefinitio
   @Override
   public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry beanDefinitionRegistry) throws BeansException {
     Reflections reflections = new Reflections("com.pprice");
-    reflections.getTypesAnnotatedWith(ApplicationUseCase.class)
-        .forEach(clazz -> {
-          RootBeanDefinition beanDefinition = new RootBeanDefinition(clazz);
-          beanDefinitionRegistry.registerBeanDefinition(clazz.getName(), beanDefinition);
-        });
+    Collection<Class<?>> annotatedClasses = reflections.getTypesAnnotatedWith(DomainService.class);
+    annotatedClasses.addAll(reflections.getTypesAnnotatedWith(ApplicationUseCase.class));
+
+    annotatedClasses.forEach(clazz -> {
+      RootBeanDefinition beanDefinition = new RootBeanDefinition(clazz);
+      beanDefinitionRegistry.registerBeanDefinition(clazz.getName(), beanDefinition);
+    });
   }
 
   @Override

@@ -6,6 +6,10 @@ import com.pprice.domain.exceptions.ValueValidationException;
 
 public record Price(Double amount, Currency currency, Instant startDate, Instant endDate, Integer priority, Integer priceId) {
 
+  public Price(Price price, Instant startDate, Instant endDate) {
+    this(price.amount(), price.currency(), startDate, endDate, price.priority(), price.priceId());
+  }
+
   public Price {
 
     if (amount == null) {
