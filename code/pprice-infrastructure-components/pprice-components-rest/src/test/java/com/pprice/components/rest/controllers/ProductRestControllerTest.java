@@ -7,7 +7,7 @@ import static org.mockito.Mockito.when;
 import java.time.OffsetDateTime;
 
 import com.pprice.components.rest.ProductRestPort;
-import com.pprice.components.rest.dtos.ProductPriceDTO;
+import com.pprice.components.rest.dtos.ProductPriceRestDTO;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -27,7 +27,7 @@ class ProductRestControllerTest {
 
   @Test
   void shouldCallPortOnGetProductPrice() {
-    ProductPriceDTO productPriceDto = oneProductPriceDto();
+    ProductPriceRestDTO productPriceDto = oneProductPriceDto();
     Integer brandId = productPriceDto.getBrandId();
     Integer productId = productPriceDto.getProductId();
     OffsetDateTime date = productPriceDto.getStartDate();
@@ -35,7 +35,7 @@ class ProductRestControllerTest {
     when(productRestPort.onGetProductPrice(brandId, productId, date))
         .thenReturn(productPriceDto);
 
-    ResponseEntity<ProductPriceDTO> result =
+    ResponseEntity<ProductPriceRestDTO> result =
         productRestController.getProductPrice(brandId, productId, date);
 
     assertEquals(HttpStatus.OK, result.getStatusCode());

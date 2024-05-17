@@ -3,7 +3,7 @@ package com.pprice.components.rest.controllers;
 import java.time.OffsetDateTime;
 
 import com.pprice.components.rest.ProductRestPort;
-import com.pprice.components.rest.dtos.ProductPriceDTO;
+import com.pprice.components.rest.dtos.ProductPriceRestDTO;
 import com.pprice.components.rest.services.V1Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,8 +16,8 @@ public class ProductRestController implements V1Api {
   private final ProductRestPort productRestPort;
 
   @Override
-  public ResponseEntity<ProductPriceDTO> getProductPrice(Integer brandId, Integer productId, OffsetDateTime date) {
-    ProductPriceDTO productPriceDto = productRestPort.onGetProductPrice(brandId, productId, date);
+  public ResponseEntity<ProductPriceRestDTO> getProductPrice(Integer brandId, Integer productId, OffsetDateTime date) {
+    ProductPriceRestDTO productPriceDto = productRestPort.onGetProductPrice(brandId, productId, date);
     return ResponseEntity.ok(productPriceDto);
   }
 

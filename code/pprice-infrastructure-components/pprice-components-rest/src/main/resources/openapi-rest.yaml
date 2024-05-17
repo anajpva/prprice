@@ -35,7 +35,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProductPriceDTO'
+                $ref: '#/components/schemas/ProductPrice'
               examples:
                 ProductPrice:
                   $ref: '#/components/examples/ProductPrice'
@@ -44,7 +44,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorDTO'
+                $ref: '#/components/schemas/Error'
               examples:
                 BadRequestExample:
                   $ref: '#/components/examples/BadRequestExample'
@@ -53,7 +53,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorDTO'
+                $ref: '#/components/schemas/Error'
               examples:
                 ProductoNotFoundExample:
                   $ref: '#/components/examples/ProductoNotFoundExample'
@@ -66,7 +66,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorDTO'
+                $ref: '#/components/schemas/Error'
               examples:
                 InternalErrorExample:
                   $ref: '#/components/examples/InternalErrorExample'
@@ -105,7 +105,7 @@ components:
 
   schemas:
 
-    ErrorDTO:
+    Error:
       type: object
       required:
         - code
@@ -130,7 +130,7 @@ components:
           type: string
           description: message of the error
 
-    ProductPriceDTO:
+    ProductPrice:
       description: Product price
       type: object
       properties:
@@ -157,9 +157,9 @@ components:
           description: End date range
           example: '2025-05-21T01:00:00Z'
         price:
-          $ref: '#/components/schemas/PriceDTO'
+          $ref: '#/components/schemas/Price'
 
-    PriceDTO:
+    Price:
       description: Price detail
       type: object
       properties:

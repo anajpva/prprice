@@ -100,10 +100,10 @@
             <configuration>
               <inputSpec>${project.basedir}/src/main/resources/openapi-rest.yaml</inputSpec>
               <generatorName>spring</generatorName>
+              <modelNameSuffix>${service.rest.modelNameSuffix}</modelNameSuffix>
               <configOptions>
                 <apiPackage>${service.rest.api.package}</apiPackage>
                 <modelPackage>${service.rest.model.package}</modelPackage>
-                <modelNameSuffix>${service.rest.modelNameSuffix}</modelNameSuffix>
                 <interfaceOnly>true</interfaceOnly>
                 <delegatePattern>true</delegatePattern>
               </configOptions>

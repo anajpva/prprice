@@ -1,10 +1,10 @@
 package com.pprice.components.rest;
 
-import com.pprice.components.rest.dtos.ErrorDTO;
+import com.pprice.components.rest.dtos.ErrorRestDTO;
 import org.springframework.http.ResponseEntity;
 
 public interface ErrorRestPort {
 
-  ResponseEntity<ErrorDTO> onHandleError(Exception cause);
+  ResponseEntity<ErrorRestDTO> onHandleError(Exception cause);
 
 }

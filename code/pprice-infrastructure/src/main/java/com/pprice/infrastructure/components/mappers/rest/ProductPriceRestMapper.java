@@ -2,7 +2,7 @@ package com.pprice.infrastructure.components.mappers.rest;
 
 import static org.mapstruct.InjectionStrategy.CONSTRUCTOR;
 
-import com.pprice.components.rest.dtos.ProductPriceDTO;
+import com.pprice.components.rest.dtos.ProductPriceRestDTO;
 import com.pprice.domain.entity.ProductPrice;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -22,5 +22,5 @@ public interface ProductPriceRestMapper {
   @Mapping(source = "entity.price.endDate", target = "endDate")
   @Mapping(source = "entity.price.amount", target = "price.amount")
   @Mapping(source = "entity.price.currency", target = "price.currency")
-  ProductPriceDTO toDTO(ProductPrice entity);
+  ProductPriceRestDTO toDTO(ProductPrice entity);
 }

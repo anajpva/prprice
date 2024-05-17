@@ -1,8 +1,8 @@
 package com.pprice.components.rest.handlers;
 
 import com.pprice.components.rest.ErrorRestPort;
-import com.pprice.components.rest.dtos.ErrorDTO;
-import com.pprice.components.rest.dtos.ErrorDTO.CodeEnum;
+import com.pprice.components.rest.dtos.ErrorRestDTO;
+import com.pprice.components.rest.dtos.ErrorRestDTO.CodeEnum;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +18,8 @@ class RestExceptionsHandler {
 
   @ResponseBody
   @ExceptionHandler(value = IllegalArgumentException.class)
-  public ResponseEntity<ErrorDTO> handleUnauthorizedException(IllegalArgumentException cause) {
-    ErrorDTO errorDTO = new ErrorDTO()
+  public ResponseEntity<ErrorRestDTO> handleUnauthorizedException(IllegalArgumentException cause) {
+    ErrorRestDTO errorDTO = new ErrorRestDTO()
         .code(CodeEnum.BAD_REQUEST)
         .message(cause.getMessage());
 
@@ -29,7 +29,7 @@ class RestExceptionsHandler {
 
   @ResponseBody
   @ExceptionHandler(value = Exception.class)
-  public ResponseEntity<ErrorDTO> handleException(Exception cause) {
+  public ResponseEntity<ErrorRestDTO> handleException(Exception cause) {
     return errorRestPort.onHandleError(cause);
   }
 

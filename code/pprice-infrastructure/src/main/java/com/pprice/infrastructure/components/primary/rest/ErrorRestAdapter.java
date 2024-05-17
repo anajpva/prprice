@@ -1,8 +1,8 @@
 package com.pprice.infrastructure.components.primary.rest;
 
 import com.pprice.components.rest.ErrorRestPort;
-import com.pprice.components.rest.dtos.ErrorDTO;
-import com.pprice.components.rest.dtos.ErrorDTO.CodeEnum;
+import com.pprice.components.rest.dtos.ErrorRestDTO;
+import com.pprice.components.rest.dtos.ErrorRestDTO.CodeEnum;
 import com.pprice.domain.exceptions.ProductNotFoundException;
 import com.pprice.domain.exceptions.ProductPriceNotFoundException;
 import com.pprice.domain.exceptions.ValueValidationException;
@@ -16,7 +16,7 @@ import org.springframework.web.server.ServerWebInputException;
 class ErrorRestAdapter implements ErrorRestPort {
 
   @Override
-  public ResponseEntity<ErrorDTO> onHandleError(Exception cause) {
+  public ResponseEntity<ErrorRestDTO> onHandleError(Exception cause) {
     CodeEnum code = CodeEnum.INTERNAL_ERROR;
     HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
 
@@ -33,7 +33,7 @@ class ErrorRestAdapter implements ErrorRestPort {
       status = HttpStatus.BAD_REQUEST;
     }
 
-    ErrorDTO errorDTO = new ErrorDTO()
+    ErrorRestDTO errorDTO = new ErrorRestDTO()
         .code(code)
         .message(cause.getMessage());
 

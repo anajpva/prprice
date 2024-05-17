@@ -2,8 +2,8 @@ package com.pprice.components.rest.dtos.mother;
 
 import java.time.OffsetDateTime;
 
-import com.pprice.components.rest.dtos.PriceDTO;
-import com.pprice.components.rest.dtos.ProductPriceDTO;
+import com.pprice.components.rest.dtos.PriceRestDTO;
+import com.pprice.components.rest.dtos.ProductPriceRestDTO;
 
 public class ProductPriceDTOMother {
 
@@ -21,8 +21,8 @@ public class ProductPriceDTOMother {
 
   private static final Integer ONE_PRICE_ID = 1;
 
-  public static ProductPriceDTO oneProductPriceDto() {
-    return new ProductPriceDTO()
+  public static ProductPriceRestDTO oneProductPriceDto() {
+    return new ProductPriceRestDTO()
         .brandId(ONE_BRAND_ID)
         .productId(ONE_PRODUCT_ID)
         .startDate(ONE_START_DATE)
@@ -31,8 +31,8 @@ public class ProductPriceDTOMother {
         .price(onePriceDto());
   }
 
-  public static PriceDTO onePriceDto() {
-    return new PriceDTO()
+  public static PriceRestDTO onePriceDto() {
+    return new PriceRestDTO()
         .amount(ONE_AMOUNT)
         .currency(CURRENCY);
   }

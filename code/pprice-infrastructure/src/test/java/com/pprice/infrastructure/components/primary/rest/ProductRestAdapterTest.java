@@ -13,7 +13,7 @@ import java.time.OffsetDateTime;
 
 import com.pprice.application.usecases.prices.GetProductPrice;
 import com.pprice.application.usecases.prices.params.GetProductPriceParams;
-import com.pprice.components.rest.dtos.ProductPriceDTO;
+import com.pprice.components.rest.dtos.ProductPriceRestDTO;
 import com.pprice.domain.entity.Product;
 import com.pprice.domain.entity.ProductPrice;
 import com.pprice.domain.entity.price.Price;
@@ -60,7 +60,7 @@ class ProductRestAdapterTest {
     when(getProductPrice.execute(getProductPriceParamsArgumentCaptor.capture()))
         .thenReturn(productPrice);
 
-    ProductPriceDTO result = productRestAdapter.onGetProductPrice(expectedProduct.brandId(), expectedProduct.productId(), date);
+    ProductPriceRestDTO result = productRestAdapter.onGetProductPrice(expectedProduct.brandId(), expectedProduct.productId(), date);
 
     assertEquals(oneProductPriceDto(), result);
     assertEquals(expectedProduct, getProductPriceParamsArgumentCaptor.getValue().getProduct());

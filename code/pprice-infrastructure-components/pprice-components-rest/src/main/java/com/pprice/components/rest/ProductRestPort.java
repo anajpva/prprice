@@ -2,11 +2,11 @@ package com.pprice.components.rest;
 
 import java.time.OffsetDateTime;
 
-import com.pprice.components.rest.dtos.ProductPriceDTO;
+import com.pprice.components.rest.dtos.ProductPriceRestDTO;
 
 public interface ProductRestPort {
 
-  ProductPriceDTO onGetProductPrice(
+  ProductPriceRestDTO onGetProductPrice(
       Integer brandId,
       Integer productId,
       OffsetDateTime date);
