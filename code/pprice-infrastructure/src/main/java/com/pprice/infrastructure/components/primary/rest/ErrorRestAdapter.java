@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.MissingServletRequestParameterException;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.server.ServerWebInputException;
 
 @Component
@@ -28,7 +29,8 @@ class ErrorRestAdapter implements ErrorRestPort {
       status = HttpStatus.NOT_FOUND;
     } else if (cause instanceof ValueValidationException
         || cause instanceof MissingServletRequestParameterException
-        || cause instanceof ServerWebInputException) {
+        || cause instanceof ServerWebInputException
+        || cause instanceof MethodArgumentTypeMismatchException) {
       code = CodeEnum.BAD_REQUEST;
       status = HttpStatus.BAD_REQUEST;
     }
@@ -40,4 +42,5 @@ class ErrorRestAdapter implements ErrorRestPort {
     return ResponseEntity.status(status)
         .body(errorDTO);
   }
+
 }

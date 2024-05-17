@@ -117,13 +117,11 @@ components:
           enum:
             - 'INTERNAL_ERROR'
             - 'BAD_REQUEST'
-            - 'UNAUTHORIZED'
             - 'PRODUCT_NOT_FOUND'
             - 'PRODUCT_PRICE_NOT_FOUND'
           x-enum-varnames:
             - INTERNAL_ERROR
             - BAD_REQUEST
-            - UNAUTHORIZED
             - PRODUCT_NOT_FOUND
             - PRODUCT_PRICE_NOT_FOUND
         message:
