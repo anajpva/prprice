@@ -1,4 +1,4 @@
-package com.pprice.domain.repository;
+package com.pprice.domain.repositories;
 
 import com.pprice.domain.entity.Product;
 import com.pprice.domain.entity.ProductPrices;

@@ -9,7 +9,6 @@ import java.time.OffsetDateTime;
 
 import com.pprice.components.rest.controllers.ProductRestController;
 import com.pprice.components.rest.dtos.ProductPriceDTO;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,6 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@Disabled
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 class ProductRestControllerIT {

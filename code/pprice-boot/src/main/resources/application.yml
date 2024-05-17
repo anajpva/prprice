@@ -5,5 +5,4 @@ spring:
     active: standalone
     include:
     - h2
-    - infrastructure
     - rest

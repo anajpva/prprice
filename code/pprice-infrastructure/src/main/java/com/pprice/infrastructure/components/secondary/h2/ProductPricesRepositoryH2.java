@@ -6,7 +6,7 @@ import com.pprice.components.h2.dao.ProductPriceH2JpaDao;
 import com.pprice.components.h2.dto.ProductPriceH2DTO;
 import com.pprice.domain.entity.Product;
 import com.pprice.domain.entity.ProductPrices;
-import com.pprice.domain.repository.ProductPricesRepository;
+import com.pprice.domain.repositories.ProductPricesRepository;
 import com.pprice.infrastructure.components.mappers.h2.ProductPriceH2Mapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

@@ -15,7 +15,7 @@ import com.pprice.domain.entity.ProductPrices;
 import com.pprice.domain.entity.price.Price;
 import com.pprice.domain.exceptions.ProductNotFoundException;
 import com.pprice.domain.exceptions.ProductPriceNotFoundException;
-import com.pprice.domain.repository.ProductPricesRepository;
+import com.pprice.domain.repositories.ProductPricesRepository;
 
 @ApplicationUseCase
 public class GetProductPrice extends UseCase<GetProductPriceParams, ProductPrice> {

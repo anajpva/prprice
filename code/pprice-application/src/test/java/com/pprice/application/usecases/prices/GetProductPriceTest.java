@@ -22,7 +22,7 @@ import com.pprice.domain.entity.ProductPrice;
 import com.pprice.domain.entity.price.Price;
 import com.pprice.domain.exceptions.ProductNotFoundException;
 import com.pprice.domain.exceptions.ProductPriceNotFoundException;
-import com.pprice.domain.repository.ProductPricesRepository;
+import com.pprice.domain.repositories.ProductPricesRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
