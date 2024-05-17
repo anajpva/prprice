@@ -4,4 +4,4 @@ server:
   servlet:
     context-path: /pprice
 
-  port: 8085
+  port: 8080
