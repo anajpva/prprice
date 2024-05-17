@@ -1,17 +1,16 @@
 package com.pprice.infrastructure.components.primary.rest;
 
-import com.pprice.components.rest.dtos.ProductPriceDTO;
-import com.pprice.infrastructure.components.mappers.rest.InstantRestMapper;
-import com.pprice.infrastructure.components.mappers.rest.ProductPriceRestMapper;
-import com.pprice.application.usecases.prices.GetProductPrice;
-import com.pprice.application.usecases.prices.params.GetProductPriceParams;
-import com.pprice.components.rest.ProductRestPort;
-import com.pprice.domain.entity.Product;
-import com.pprice.domain.entity.ProductPrice;
-
 import java.time.Instant;
 import java.time.OffsetDateTime;
 
+import com.pprice.application.usecases.prices.GetProductPrice;
+import com.pprice.application.usecases.prices.params.GetProductPriceParams;
+import com.pprice.components.rest.ProductRestPort;
+import com.pprice.components.rest.dtos.ProductPriceDTO;
+import com.pprice.domain.entity.Product;
+import com.pprice.domain.entity.ProductPrice;
+import com.pprice.infrastructure.components.mappers.rest.InstantRestMapper;
+import com.pprice.infrastructure.components.mappers.rest.ProductPriceRestMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

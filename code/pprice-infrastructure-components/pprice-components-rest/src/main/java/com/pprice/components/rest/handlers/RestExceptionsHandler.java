@@ -1,9 +1,8 @@
 package com.pprice.components.rest.handlers;
 
+import com.pprice.components.rest.ErrorRestPort;
 import com.pprice.components.rest.dtos.ErrorDTO;
 import com.pprice.components.rest.dtos.ErrorDTO.CodeEnum;
-import com.pprice.components.rest.ErrorRestPort;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

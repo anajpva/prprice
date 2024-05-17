@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
 import com.pprice.components.rest.ErrorRestPort;
-import com.pprice.components.rest.dtos.ErrorDTO.CodeEnum;
 import com.pprice.components.rest.dtos.ErrorDTO;
+import com.pprice.components.rest.dtos.ErrorDTO.CodeEnum;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

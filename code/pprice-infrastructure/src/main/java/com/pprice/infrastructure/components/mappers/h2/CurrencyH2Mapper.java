@@ -3,7 +3,6 @@ package com.pprice.infrastructure.components.mappers.h2;
 import java.util.Optional;
 
 import com.pprice.domain.entity.price.Currency;
-
 import org.mapstruct.Mapper;
 
 @Mapper

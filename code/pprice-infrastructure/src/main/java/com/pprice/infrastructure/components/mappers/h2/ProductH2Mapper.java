@@ -1,7 +1,6 @@
 package com.pprice.infrastructure.components.mappers.h2;
 
 import com.pprice.domain.entity.Product;
-
 import org.mapstruct.Mapper;
 
 @Mapper

@@ -1,8 +1,8 @@
 package com.pprice.components.rest;
 
-import com.pprice.components.rest.dtos.ProductPriceDTO;
-
 import java.time.OffsetDateTime;
+
+import com.pprice.components.rest.dtos.ProductPriceDTO;
 
 public interface ProductRestPort {
 

@@ -1,8 +1,8 @@
 package com.pprice.infrastructure.components.primary.rest;
 
+import com.pprice.components.rest.ErrorRestPort;
 import com.pprice.components.rest.dtos.ErrorDTO;
 import com.pprice.components.rest.dtos.ErrorDTO.CodeEnum;
-import com.pprice.components.rest.ErrorRestPort;
 import com.pprice.domain.exceptions.ProductNotFoundException;
 import com.pprice.domain.exceptions.ProductPriceNotFoundException;
 import com.pprice.domain.exceptions.ValueValidationException;

@@ -1,13 +1,13 @@
 package com.pprice.components.rest.controllers;
 
+import java.time.OffsetDateTime;
+
 import com.pprice.components.rest.ProductRestPort;
+import com.pprice.components.rest.dtos.ProductPriceDTO;
+import com.pprice.components.rest.services.V1Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
-import com.pprice.components.rest.dtos.ProductPriceDTO;
-import com.pprice.components.rest.services.V1Api;
-
-import java.time.OffsetDateTime;
 
 @RestController
 @RequiredArgsConstructor
