@@ -48,6 +48,14 @@ To run the application, follow these steps:
    docker run -it -p 8080:8080 pprice:latest
    ``` 
 
+### Usage
+
+Example of curl:
+
+   ```  
+   curl --location --request GET 'http://localhost:8080/pprice/v1/products/prices?brandId=1&productId=3455&date=2020-06-15T17:00:00Z' \
+   ```  
+
 
 ### Note
 
